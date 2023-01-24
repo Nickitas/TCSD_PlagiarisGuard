@@ -1,0 +1,46 @@
+@import '../../assets/mixins/responsive_font.scss';
+
+
+.home {
+    // margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    video {
+        width: 100%;
+    }
+
+    .hero {
+        position: absolute;
+        top:0;
+        left:0;
+
+        width: 100%;
+        height: 100%;
+    }
+
+    .baner {
+        padding: 30px 0;
+        background: var(--baner);
+        backdrop-filter: blur(3px);
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 1920px;
+        }
+
+        .disc {
+            margin: 15px 0 10px;
+            @include responsive-font(24, 18);
+            background: transparent;
+        }
+
+        .disc ~ div {
+            max-width: 200px;
+        }
+    }
+}

@@ -1,0 +1,26 @@
+.theme_toggle_btn {
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 500;
+    background-color: var(--color);
+    transition: all .25s ease-in;
+
+    svg {
+        color: var(--grey) !important;
+    }
+    
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0px 4px 47px -6px var(--accent);
+        -webkit-box-shadow: 0px 4px 47px -6px var(--accent);
+        -moz-box-shadow: 0px 4px 47px -6px var(--accent);
+    }
+    
+    &:focus,
+    &:focus-visible {
+        outline: 4px auto -webkit-focus-ring-color;
+    }
+}

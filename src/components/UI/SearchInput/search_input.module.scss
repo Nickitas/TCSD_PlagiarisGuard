@@ -1,0 +1,47 @@
+@import '../../../assets/mixins/responsive_font.scss';
+
+.search {
+    margin: 0 0 0 auto;
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    max-width: 700px;
+    background-color: #d9d9d936;
+    border: 1px solid #D9D9D9;
+    border-radius: 20px;
+    transition: all .25s ease;
+
+    .icon {
+        padding: .65em 1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color);
+    }
+
+    .input {
+        padding: .65em 1em;
+        height: 100%;
+        width: 90%;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        border-radius: 20px;
+        @include responsive-font(20, 14);
+        font-weight: 400;
+        line-height: 1.4;
+        color: var(--color);
+        opacity: .7;
+        
+        .input:focus {
+            &::placeholder {
+                color: transparent;
+            }
+        }
+    }
+
+    &:hover {
+        border: 1px solid var(--accent);
+    }
+}
