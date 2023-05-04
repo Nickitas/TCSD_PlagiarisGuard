@@ -93,7 +93,7 @@ class GoogleSearchParser:
 
     def print_filtered_results(self):
         filtered_urls = self.filter_results()
-        print('\n\n#### LOGS ###################################################################\n')
+        print('\n\n#### Pages URL Links \n')
         for index, url in enumerate(filtered_urls):
             print(f'№ {index:<3} -> {url}')
             print(self._search_results_info(10))
