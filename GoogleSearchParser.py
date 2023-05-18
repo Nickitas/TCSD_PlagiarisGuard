@@ -5,15 +5,21 @@ from googlesearch import search
 from bs4 import BeautifulSoup
 import fake_useragent
 import cloudscraper
+import urllib.request 
+from urllib import parse
+import json
 
 
 
 class GoogleSearchParser:
     def __init__(self, query, num=10, stop=10, pause=3):
+        self.url = 'https://google-search72.p.rapidapi.com/search'
         self.query = query
         self.num = num
         self.stop = stop
         self.pause = pause
+        self.api_key = '73cf160517msh410314fc5416cf9p1c33cajsnb6a1cdcd393c'
+        self.api_host = 'google-search72.p.rapidapi.com'
         self.lang = 'ru'
         self.tld = 'com'
         self.user_agent = fake_useragent.UserAgent().random
@@ -37,10 +43,33 @@ class GoogleSearchParser:
 
 
     def get_results(self):
-        for link in search(self.query, user_agent=self.user_agent, lang=self.lang, tld=self.tld, num=self.num, stop=self.stop, pause=self.pause):
-            self.all_links.append(link)
         
+        querystring = {'query':self.query, 'gl':'us', 'lr':self.lang, 'num':self.num, 'start':'0', 'stop': self.stop, 'sort': 'relevance'} # PAUSE TLD U_A
+        headers = {
+            'X-RapidAPI-Key': self.api_key,
+            'X-RapidAPI-Host': self.api_host
+        }
+        response = requests.get(self.url, headers=headers, params=querystring)
+
+        for item in response.json()['items']:
+            self.all_links.append(item['link'])
+    
+
+    def download_files_from_links(self):
+        f = open('downloaded.json')
+        data = json.load(f)
         
+        for link in self.all_links:
+            if (link[-5:] == '.docx' or link[-4:] == '.pdf') and link not in data:
+                unquoted_url = parse.unquote(link)
+                path = parse.urlparse(unquoted_url).path
+                filename = path.rstrip("/").split("/")[-1]
+                urllib.request.urlretrieve(link, f'./downloaded/{filename}')
+                data.append(link)
+                
+        with open('downloaded.json', 'w') as outfile:
+            json_string = json.dumps(data)
+            outfile.write(json_string)
 
     # def get_results(self):
     #     try:

@@ -3,6 +3,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from pymystem3 import Mystem
+from nlp_rake import Rake
 
 nltk.download('stopwords')
 nltk.download('punkt')
@@ -11,8 +12,20 @@ nltk.download('averaged_perceptron_tagger')
 
 
 class KeywordExtractor:
-    def __init__(self, text) -> None:
+    def __init__(self, text, keywords_count=7, max_words=10) -> None:
         self.text = text.lower()
+        self.keywords_count = keywords_count
+        self.max_words = max_words
+
+
+    def get_keywords(self):
+        result = []
+        stops = list(set(stopwords.words('russian')))
+        rake = Rake(stopwords = stops, max_words = self.max_words)
+        keywords_list = rake.apply(self.text)[:self.keywords_count]
+        for phrase in keywords_list:
+            result.append(phrase[0])
+        return result
 
 
     def _tokenize(self):
