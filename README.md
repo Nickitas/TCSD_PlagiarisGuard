@@ -10,6 +10,8 @@ The system is designed to detect plagiarism in text documents and help users cre
 
 The system has a simple and intuitive API testing interface, making it easy to use for all users. The code is written in Python and uses libraries for text processing and comparison algorithms. The front-end is written in React and uses Vite for fast development and build.
 
+You can learn more about the project in the presentation at the link: [🔗 click on me](https://www.figma.com/file/CGZnkXPIPCoflVHyhuCYvS/IT-Solutions-2023?type=design&node-id=403%3A62&t=t4zwu8Tr5zS4QPSm-1)
+
 ## ⚙️ Project Deployment Instructions
 
 ### 🌕 Client
