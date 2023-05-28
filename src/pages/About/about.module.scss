@@ -2,8 +2,24 @@
 
 
 .about {
-    margin: 30px auto;
-    padding-top: 60px;
-    height: calc(100vh - 60px - 58px);
-    width: 100%;
+    
+    .col {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+        width: 100%;
+        max-width: 1920px;
+    }
+
+    .header {
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--frame-color);
+    }
+
+    frame {
+        border: 1px solid rgba(0, 0, 0, 0.1); 
+        width: 800;
+        height: 50vh;
+    }
 }

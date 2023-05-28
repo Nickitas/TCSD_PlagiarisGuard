@@ -11,25 +11,26 @@ const ShrinkBtn = ({ shrink, setShrink }) => {
 
     return (
         <div className={classes.shrink_btn}  onClick={handlerShrinkpadding}>
-            { shrink ? <ShrinkOnIcon/> : <ShrinkOffIcon/> }
+            { shrink ?  <ShrinkOffIcon/> : <ShrinkOnIcon/> }
         </div>
     )
 }
 
-const Table = ({ ...props }) => {
+const Table = ({ children, ...props }) => {
+    const [shrink, setShrink] = useState(false)
 
-    const [shrink, setShrink] = useState(true)
-
-    return (
+    const table = (
         <div className={classes.table_container}>
             <div className={classes.table_wrapp}>
                 <ShrinkBtn shrink={shrink} setShrink={setShrink} />
-                <table className={`${classes.table} ${shrink ? `${classes.shrink}` : ''}`} {...props}>
-                    { props.children }
+                <table className={`${classes.table} ${shrink ?  `${classes.shrink}` : ''}`} {...props}>
+                    { children }
                 </table>
             </div>
         </div>
     )
+
+    return table
 }
 
 export { Table }

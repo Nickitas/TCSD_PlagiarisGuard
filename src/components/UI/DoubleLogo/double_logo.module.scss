@@ -1,0 +1,35 @@
+@import '../../../assets/mixins/responsive_font.scss';
+
+.double_logo {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    max-width: 220px;
+
+
+    div {
+        svg {
+            width: 113px;
+        }
+        span {
+            display: block !important;
+            max-width: 170px;
+            white-space: normal; 
+            overflow: visible;
+            font-family: 'Poppins-Bold', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            @include responsive_font(24, 18);
+            line-height: 1.2;
+            color: var(--text-op5-color);
+        }
+    }
+
+    img {
+        position: absolute;
+        top: -40%;
+        right: 12px;
+        width: 48px;
+        height: 48px;
+    }
+}

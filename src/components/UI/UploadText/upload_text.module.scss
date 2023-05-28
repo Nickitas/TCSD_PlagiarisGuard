@@ -1,0 +1,42 @@
+@import '../../../assets/mixins/responsive_font.scss';
+
+
+.upload_text {
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+
+    textarea.upload {
+        resize: none;
+        border: none;
+        outline: none;
+        padding: 20px;
+        width: 100%;
+        min-height: 50vh;
+        border-radius: 26px;
+        border: 4px dashed var(--frame-color);
+        background-color: transparent;
+        
+        font-family: 'Poppins-Light', sans-serif;
+        font-weight: 300;
+        @include responsive_font(16, 10);
+        color:  var(--text-color);
+
+        transition: all .4s ease-in-out;
+
+        &.active, &:hover {
+            border: 4px dashed var(--accent);
+        }
+    }
+
+    h3 {
+        margin-bottom: 20px;
+    }
+
+    .controls {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 20px;
+    }
+}

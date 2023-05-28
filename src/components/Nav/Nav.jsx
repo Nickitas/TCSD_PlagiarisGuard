@@ -1,105 +1,112 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useAuth } from '../hook/useAuth'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useAuth } from '../../hook/useAuth'
+import { LogoComponent } from '../UI/Logo/Logo'
+import { Button } from '../UI/Button/Button'
+import { MenuButton } from '../UI/MenuButton/MenuButton'
 import { ThemeToggleBtn } from '../UI/ThemeToggleBtn/ThemeToggleBtn'
-import { Logo, MenuIcon, CloseIcon, ProfileIcon, ChartIcon, HomeIcon, CheckIcon, Share } from '../svg.module' 
+import { CaseIcon, ProfileIcon, ChartIcon, CallIcon, BoockIcon, UserOk, UserEdit, LicenseIcon, SecurityUserIcon, HeartTickIcon, ForbiddenIcon } from '../svg.module' 
 import classes from './nav.module.scss'
 
 
-const menuList = [
-    {
-        text: 'Главная',
-        link: '/',
-        icon: <HomeIcon/>
-    },
-    {
-        text: 'Проверить',
-        link: '/cabinet',
-        icon: <CheckIcon/>
-    },
-    {
-        text: 'Статистика',
-        link: '/statistics',
-        icon: <ChartIcon/>
-    },
-    {
-        text: 'Профиль',
-        link: '/profile',
-        icon: <ProfileIcon/>
-    },
-    {
-        text: 'О системе',
-        link: '/about',
-        icon: <Share/>
-    }
-]
-
 const Nav = () => {
-
-    const { user, signout } = useAuth()
     const navigate = useNavigate()
-    const handlerLogout = () => {
-        signout(() => navigate('/auth', {replace: true}))
-        setMenuOpen(false)
-    }
 
-    const [menuOpen, setMenuOpen] = useState(false)
+    const items = [
+        {
+            title: 'Личный кабинет',
+            icon: <CaseIcon/>,
+            path: '/',
+            isPrivate: true
+        },
+        {
+            title: 'Моя статистика',
+            icon: <ChartIcon/>,
+            path: '/statistics',
+            isPrivate: true
+        },
+        {
+            title: 'Профиль',
+            icon: <ProfileIcon />,
+            path: '/profile',
+            isPrivate: true
+        },
+        {
+            title: 'О системе',
+            icon: <BoockIcon/>,
+            path: '/about',
+            isPrivate: false
+        },
+        {
+            title: 'Контакты',
+            icon: <CallIcon/>,
+            path: '/contacts',
+            isPrivate: true
+        },
+        {
+            title: 'Пользовательское соглашение',
+            icon: <UserOk/>,
+            path: '/terms_of_use',
+            isPrivate: true
+        },
+        {
+            title: 'Соглашение об обработке персональных данных',
+            icon: <UserEdit/>,
+            path: '/agreement_of_personal_data',
+            isPrivate: false
+        },
+        {
+            title: 'Лицензия',
+            icon: <LicenseIcon/>,
+            path: '/license',
+            isPrivate: true
+        },
+        {
+            title: 'Политика безопасности',
+            icon: <SecurityUserIcon/>,
+            path: 'security_policy',
+            isPrivate: false
+        },
+        {
+            title: 'Помочь проекту',
+            icon: <HeartTickIcon/>,
+            path: '/help_the_project',
+            isPrivate: true
+        },
+        {
+            title: 'Выйти из аккаунта',
+            icon: <ForbiddenIcon/>,
+            path: '',
+            isPrivate: true
+        }
+    ]
 
-    return (
+    const nav = (
         <nav className={classes.nav}>
             <div className='container'>
                 <div className={classes.row}>
 
-                    <div className={classes.list}>
-                        <Link to={'/'}>
-                            <div className={classes.brand}>
-                                <Logo />
-                                <h2>ДГТУ</h2>
-                            </div>
-                        </Link>
+                    <LogoComponent 
+                        text={'Антиплагиат ДГТУ'}
+                        delay={100}
+                    />
 
-                        <ThemeToggleBtn  />
-                    
+                    <div className={classes.controls}>
+                        <Button accent onClick={() => navigate('/check_document')}>
+                            Начать
+                        </Button>
+                        <ThemeToggleBtn />
+                        <MenuButton
+                            items={items}
+                        />
                     </div>
 
-                    {user && (
-                        <div className={classes.list}>
-                            <Link to={'/profile'}>
-                                <span>{ user.name }</span>
-                                <ProfileIcon/>
-                            </Link>
-
-                            <div className={classes.menu_btn} onClick={() => setMenuOpen(e => !e)}>
-                                { menuOpen ? <CloseIcon/> : <MenuIcon/> }
-                            </div>
-
-                            <div className={`${classes.dropdown} ${menuOpen && classes.open}`}>
-                                <div className='container'>
-                                    <div className={classes.col}>
-                                        {
-                                            menuList.map((item, key) => (
-                                                <Link key={key} to={item.link} onClick={() => {
-                                                    setMenuOpen(false)
-                                                }}>
-                                                    {item.icon}
-                                                    {item.text}
-                                                </Link>
-                                            ))
-                                        }
-                                        <div className={classes.exit_btn} onClick={handlerLogout}>
-                                            выход
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    )}
-
-                </div>  
+                </div>
             </div>
         </nav>
     )
+
+    return nav
 }
 
-export default Nav
+export { Nav }

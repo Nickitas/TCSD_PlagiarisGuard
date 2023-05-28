@@ -38,7 +38,7 @@
         font-weight: 400;
         @include responsive_font(42, 24);
         line-height: 96px;
-        color: var(--color);
+        color: var(--text-color);
         user-select: none;
 
         @media (max-width:928px) {
@@ -91,7 +91,7 @@
             font-weight: 400;
             @include responsive-font(32, 20);
             line-height: 1.5;
-            color: var(--color);
+            color: var(--text-color);
             opacity: 0;
         }
     }

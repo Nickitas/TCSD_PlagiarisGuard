@@ -1,0 +1,195 @@
+@import '../../assets/mixins/responsive_font.scss';
+
+.report,
+.await {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+    & > div {
+        padding-top: 40px;
+    }
+
+    .col {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        width: 100%;
+        max-width: 1920px;
+    }
+
+    .header {
+        padding-bottom: 50px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+        padding-bottom: 50px;
+        border-bottom: 1px solid var(--frame-color);
+
+        .texts {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            h1 {
+                margin-bottom: 44px;
+            }
+            p {
+                color: var(--text-color);
+
+                span {
+                    color: var(--text-color);
+                    text-shadow: 0px 4px 20px var(--accent);
+                }
+
+                &:last-child {
+                    color: var(--text-op7-color);
+                }
+            }
+        }
+    }
+
+    .header_await {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-bottom: 50px;
+        border-bottom: 1px solid var(--frame-color);
+    }
+
+    .info {
+        padding-bottom: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+        border-bottom: 1px solid var(--frame-color);
+
+        .heading {
+            font-family: 'Poppins-Regular', sans-serif;
+            font-weight: 400;
+            @include responsive_font(32, 20);
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+        .table {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            
+            .row {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                gap: 20px;
+                border-bottom: 1px solid var(--frame-color);
+                &:last-child {
+                    border: none;
+                }
+            }
+
+            .category {
+                max-width: 300px;
+                font-family: 'Poppins-Bold', sans-serif;
+                font-weight: 700;
+                @include responsive_font(20, 16);
+                line-height: 1.5;
+            }
+            .value {
+                max-width: 700px;
+                font-family: 'Poppins-Regular', sans-serif;
+                font-weight: 400;
+                @include responsive_font(20, 16);
+                line-height: 1.5;
+                text-align: right;
+            }
+        }
+    }
+
+    .progres_bars_wrapper {
+        display: flex;
+        align-items: stretch;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+
+        @media (max-width: 540px) {
+
+        }
+    }
+
+    p.about {
+        font-family: 'Poppins-Regular', sans-serif;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 1.5;
+        color: var(--text-color);
+    }
+
+
+    .controls {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        
+        @media (max-width: 1035px) {
+            flex-wrap: wrap-reverse;
+
+            & button {
+                padding: 0.2em .8em;
+            }
+        }
+    }
+}
+
+
+
+.spinner {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateZ(1px);
+    max-width: 20vw;
+
+    & > div {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20vw;
+        height: 20vw;
+        margin: 8px;
+        border-radius: 50%;
+        background: var(--accent);
+        animation: lds-circle 6.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+
+        svg {
+            width: 100%;
+        }
+    }
+
+    &:hover {
+        div {
+            animation: none;
+        }
+    }
+}
+
+@keyframes lds-circle {
+    0%, 100% {
+      animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+    }
+    0% {
+      transform: rotateY(0deg);
+    }
+    50% {
+      transform: rotateY(1800deg);
+      animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    }
+    100% {
+      transform: rotateY(3600deg);
+    }
+}

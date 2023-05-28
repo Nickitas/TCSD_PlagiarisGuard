@@ -1,7 +1,5 @@
-
-
 .wrapper {
-    background-color: linear-gradient(45deg, var(--main_bg), var(--color));
+    background-color: linear-gradient(45deg, var(--bg), var(--accent));
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -16,7 +14,7 @@
     .line {
         width: 260px;
         height: 260px;
-        border: 5px solid var(--color);
+        border: 5px solid var(--text-color);
         border-radius: 50%;
     }
 

@@ -1,0 +1,58 @@
+@import '../../../assets/mixins/responsive_font.scss';
+
+.progress_bar {
+    display: flex;
+    flex-direction: column;
+    max-width: 323.72px;
+    min-width: 250px;
+    user-select: none;
+    transition: all .4 ease-in-out;
+
+    @media (max-width: 540px) {
+        max-width: none;
+        width: 100%;
+    }
+
+    h5.title {
+        font-family: 'Poppins-Bold', sans-serif;
+        font-weight: 700;
+        @include responsive_font(24, 18);
+        line-height: 1.5;
+    }
+
+    .progress {
+        padding: 3px 3px 3px 8px;
+        width: 100%;
+        height: 35px;
+        background: var(--grey-color);
+        border-radius: 16px;
+        overflow: hidden;
+    }
+
+    .fill {
+        height: 100%;
+        border-radius: 22px;
+
+        &.red {
+            background-color: var(--red); 
+        }
+        &.blue {
+            background-color: var(--blue); 
+        }
+        &.yellow {
+            background-color: var(--yellow); 
+        }
+        &.green {
+            background-color: var(--green); 
+        }
+    }
+
+    h4.value {
+        margin-top: 9px;
+        font-family: 'Poppins-Bold', sans-serif;
+        font-weight: 700;
+        @include responsive_font(36, 22);
+        line-height: 1.5;
+        text-align: right;
+    }
+}

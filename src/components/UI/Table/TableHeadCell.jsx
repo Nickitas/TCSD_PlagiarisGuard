@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { ArrowSolidIcon } from '../../svg.module'
 import classes from './table.module.scss'
 
-
 const TableHeadCell = ({ ...props }) => {
 
     const [toggle, setToggle] = useState(false)

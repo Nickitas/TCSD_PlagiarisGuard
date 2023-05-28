@@ -1,0 +1,18 @@
+
+
+.statistics {
+    
+    .col {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+        width: 100%;
+        max-width: 1920px;
+    }
+
+    .header {
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--frame-color);
+    }
+}

@@ -1,0 +1,129 @@
+@import '../../../assets/mixins/responsive_font.scss';
+
+.menu_button_wrapper {
+    position: relative;
+}
+
+.menu_button {
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 38.19px;
+    border: 2px solid var(--text-color);
+    border-radius: 8px;
+    color: var(--text-color);
+
+    transition: all .4s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        border-color: var(--accent);
+    }
+    &:focus,
+    &:focus-visible {
+        outline: 4px auto -webkit-focus-ring-color;
+    }
+}
+
+.dropdown {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    width: 560px;
+    max-height: 590px;
+    overflow-y: auto;
+    background-color: var(--frame-color);
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(8%);
+    visibility: hidden;
+    transition: all .2s ease-in-out;
+
+    &.open {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0%);
+        transition: all .2s ease-out;
+    }
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  
+    .item {
+        padding: 12px;
+        border-radius: 8px;
+        background-color: transparent;
+        font-family: 'Poppins-Regular', sans-serif;
+        font-weight: 400;
+        line-height: 1.2;
+        color: var(--text-color);
+
+        a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: inherit;
+            opacity: 1 !important;
+
+            span {
+                font-family: inherit;
+                font-weight: inherit;
+                line-height: inherit;
+                @include responsive-font(18, 14);
+                color: inherit;
+            }
+        }
+
+        transition: all .4s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            transition: all .2s ease-out;
+            background-color: var(--bg);
+        }
+
+        &:last-child {
+            color: var(--red);
+        }
+    }
+} 
+
+
+@media (max-width: 768px) {
+    .dropdown {
+        position: fixed;
+        inset: 0;
+        top: 0;
+        margin-top: 70px;
+        padding: 30px 12.500vw;
+        justify-content: flex-start;
+        width: 100%;
+        border: none;
+        border-radius: 0;
+        overflow-y: auto;
+        background: var(--bg);
+        border-radius: none;
+
+        @media only screen and (max-width: 470px) {
+            padding: 10px;
+        }
+
+        &.open {
+            padding-bottom: 20vh;
+            opacity: 1;
+            transform: translateY(0%);
+            height: 100vh;
+            max-height: none;
+            transition: all .2s ease-out;
+        }
+    }
+}

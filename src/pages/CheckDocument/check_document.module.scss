@@ -1,0 +1,74 @@
+@import '../../assets/mixins/responsive_font.scss';
+
+.check_document {
+
+    .col {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+        width: 100%;
+        max-width: 1920px;
+    }
+
+    .header {
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--frame-color);
+    }
+
+    .frame {
+        display: flex;
+        flex-direction: column;
+
+        .tabs {
+            display: flex;
+            align-items: center;
+            transform: translateX(30px);
+
+
+            .anchor {
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-width: 120px;
+                border-top-left-radius: 6px;
+                border-top-right-radius: 6px;
+                background-color: var(--frame-color);
+                opacity: .6;
+                user-select: none;
+
+                span {
+                    font-family: 'Poppins-Medium', sans-serif;
+                    font-weight: 500;
+                    @include responsive_font(14, 10);
+                    line-height: 1;
+                    color: var(--text-color);
+                }
+
+                transition: all .4s ease-in-out;
+                cursor: pointer;
+
+                &:hover {
+                    transition: all .2s ease-in-out;
+                    border-color: var(--accent);
+                    span {
+                        font-family: 'Poppins-Bold', sans-serif;
+                        font-weight: 700;
+                    }
+                }
+
+                &.active {
+                    opacity: 1;
+                    transition: all .2s ease-in-out;
+                    background-color: var(--accent);
+                    span {
+                        font-family: 'Poppins-Bold', sans-serif;
+                        font-weight: 700;
+                        color: var(--bg);
+                    }
+                }
+            }
+        }
+    }
+}

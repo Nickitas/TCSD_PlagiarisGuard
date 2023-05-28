@@ -7,7 +7,8 @@
     top: 0;
     left: 0;
     right: 0;
-    background-color: var(--grey);
+    border-bottom: 1px solid var(--grey-color);
+    background-color: var(--frame-color);
     user-select: none;
 
     .row {
@@ -18,117 +19,13 @@
         justify-content: space-between;
         width: 100%;
         max-width: 1920px;
-        border-bottom: 1px solid #d9d9d9b3;
-    }
-    .col {
-        display: flex;
-        flex-direction: column;
     }
 }
 
-.list {
+
+.controls {
     display: flex;
     align-items: center;
-
-    svg {
-        color: var(--color);
-    }
-}
-
-.brand {
-    margin-right: 50px;
-    display: flex;
-    align-items: center;
-    color: var(--color);
-    transition: all .3s ease;
-    
-    &:hover {
-        cursor: pointer;
-        opacity: .8;
-    }
-
-    svg {
-        margin-right: 2px;
-        max-width: 40px;
-        max-height: 40px;
-    }
-    h2 {
-        font-weight: 900;
-        position: relative;
-    }
-}
-
-.menu_btn {
-    margin-left: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 46px;
-    max-width: 46px;
-    transition: all .3s ease;
-
-    &:hover {
-        cursor: pointer;
-        opacity: .8;
-    }
-}
-
-
-
-.dropdown {
-    position: fixed;
-    top: 59px;
-    right: 0;
-    width: 360px;
-    opacity: 0;
-    transform: translateX(100%);
-
-    padding: 20px 0;
-    border-radius: 0 0 0 10px;
-    background-color: var(--grey);
-    box-shadow: -15px 19px 48px -15px rgba(0,0,0,0.34);
-    -webkit-box-shadow: -15px 19px 48px -15px rgba(0,0,0,0.34);
-    -moz-box-shadow: -15px 19px 48px -15px rgba(0,0,0,0.34);
-
-    a {
-        padding: 10px 0;
-        font-weight: 400;
-        font-size: 18px;
-        line-height: 1.35;
-        text-align: left;
-        color: var(--color);
-        border-bottom: 1px solid #0d0d0d23;
-        transition: all .3s ease;
-        
-        &:hover {
-            cursor: pointer;
-            opacity: .8;
-            font-weight: 700;
-        }
-    }
-
-    &.open {
-        transition: all .35s ease-in;
-        opacity: 1;
-        transform: translateX(0%);
-    } 
-}
-
-.exit_btn {
-    padding: 10px 0 0 0;
-    font-weight: 700;
-    text-align: right;
-    
-    transition: all .3s ease-in;
-    cursor: pointer;
-    
-    &:hover {
-        opacity: .6;
-    }
-}
-
-@media (max-width: 410px) {
-    .list + div > a {
-        display: none;
-    }
+    justify-content: space-between;
+    gap: 20px;
 }

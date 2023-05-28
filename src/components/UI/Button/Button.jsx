@@ -1,18 +1,23 @@
 import classes from './button.module.scss'
 
+const Button = ({ ico, children, accent, red, disabled, onClick, ...props }) => {
 
-const Button = ({ ...props }) => {
-    
-    return (
-        <button className={classes.button} {...props}>
-            <div className={classes.icon}>
-                {props.icon}
-            </div>
-            <div className={classes.text}>
-                { props.children }
-            </div>        
+    const button  = (
+        <button className={classes.button}
+            type={props.type}
+            data-accent={accent}
+            data-red={red}
+            onClick={onClick}
+            disabled={disabled}
+        >
+            { ico && ico }
+            <span>
+                { children }
+            </span>
         </button>
     )
+
+    return button  
 }
 
-export { Button }
+export { Button  }
