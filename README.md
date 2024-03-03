@@ -2,7 +2,7 @@
   <img src="https://github.com/Nickitas/DSTU_Anti-plagiarism/blob/main/preview.jpg" width="100%"/>
 </div>
 
-# DSTU_Anti-plagiarism
+# DSTU Anti Plagiarism "PlagiarisGuard"
 Web tool for checking texts for uniqueness in the electronic library of DSTU
 
 ## 🗂 About system :
